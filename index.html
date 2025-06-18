@@ -1799,16 +1799,47 @@
 
         // 音声読み上げ機能（履歴記録付き）
         function speak(text) {
+            console.log('Speaking:', text); // デバッグ用
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 
                 const utterance = new SpeechSynthesisUtterance(text);
+                utterance.text = text; // 明示的にテキストを設定
                 utterance.lang = 'en-US';
                 utterance.rate = 0.9;
                 utterance.pitch = 1.0;
                 utterance.volume = 1.0;
                 
-                window.speechSynthesis.speak(utterance);
+                // 音声リストが読み込まれるのを待つ
+                function setVoiceAndSpeak() {
+                    const voices = window.speechSynthesis.getVoices();
+                    console.log('Available voices:', voices.length);
+                    
+                    // 英語の音声を探す（優先順位：en-US > en）
+                    const englishVoice = voices.find(voice => voice.lang === 'en-US') || 
+                                       voices.find(voice => voice.lang.startsWith('en'));
+                    
+                    if (englishVoice) {
+                        console.log('Using voice:', englishVoice.name, englishVoice.lang);
+                        utterance.voice = englishVoice;
+                    }
+                    
+                    window.speechSynthesis.speak(utterance);
+                }
+                
+                // 音声リストが既に読み込まれている場合
+                if (window.speechSynthesis.getVoices().length > 0) {
+                    setVoiceAndSpeak();
+                } else {
+                    // 音声リストの読み込みを待つ
+                    window.speechSynthesis.onvoiceschanged = setVoiceAndSpeak;
+                    // フォールバック：音声リストが取得できない場合でも実行
+                    setTimeout(() => {
+                        if (window.speechSynthesis.getVoices().length === 0) {
+                            window.speechSynthesis.speak(utterance);
+                        }
+                    }, 100);
+                }
             } else {
                 alert('お使いのブラウザは音声読み上げに対応していません。');
             }
