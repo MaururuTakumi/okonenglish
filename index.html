@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おこん接客英語マニュアル</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 768px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .accordion {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            padding: 20px;
+            background-color: #fff;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #f8f9fa;
+        }
+
+        .accordion-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .accordion-arrow {
+            transition: transform 0.3s ease;
+            font-size: 20px;
+            color: #6c757d;
+        }
+
+        .accordion.active .accordion-arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion.active .accordion-content {
+            max-height: 2000px;
+        }
+
+        .phrase-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 16px;
+            border: 1px solid #e9ecef;
+        }
+
+        .phrase-section {
+            margin-bottom: 16px;
+        }
+
+        .phrase-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .phrase-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #212529;
+            background-color: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+
+        .play-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .play-button:hover {
+            background-color: #0056b3;
+        }
+
+        .play-button:active {
+            transform: scale(0.98);
+        }
+
+        .response-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .response-list li {
+            background-color: #e7f3ff;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #004085;
+            border-left: 3px solid #007bff;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+            
+            .accordion-header h2 {
+                font-size: 16px;
+            }
+            
+            .phrase-card {
+                margin: 12px;
+                padding: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>おこん接客英語マニュアル 🍚🍶</h1>
+        
+        <div id="accordion-container">
+            <!-- ① ご来店時 -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>① ご来店時</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">いらっしゃいませ！お待ちしておりました。お名前をお伺いしてもよろしいでしょうか？ありがとうございます。それではご案内いたします。お席こちらでございます。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Welcome! We've been expecting you. May I have your name, please? Thank you. Please follow me to your table. Your seat is right this way.</div>
+                            <button class="play-button" onclick="speak('Welcome! We\'ve been expecting you. May I have your name, please? Thank you. Please follow me to your table. Your seat is right this way.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I have a reservation under [Name]</li>
+                                <li>Yes, it's [Name]</li>
+                                <li>Thank you</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ② コート預かり -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>② コート預かり</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">よろしければお召し物をお預かりいたします。ただいまおしぼりをお持ちいたしますので、少々お待ちください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">May I take your coat? I'll bring you a hot towel in just a moment. Please wait a moment.</div>
+                            <button class="play-button" onclick="speak('May I take your coat? I\'ll bring you a hot towel in just a moment. Please wait a moment.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, please</li>
+                                <li>No, thank you. I'll keep it</li>
+                                <li>Thank you</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ③ おしぼり提供 -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>③ おしぼり提供</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">こちらの黒い冊子はドリンクメニューでございます。ソフトドリンク、日本酒、焼酎、ワインは口頭でご案内いたしますので、ご希望がございましたらお気軽にお尋ねください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">This black booklet is our drink menu. I can also recommend soft drinks, sake, shochu, and wine verbally. Please feel free to ask if you'd like any recommendations.</div>
+                            <button class="play-button" onclick="speak('This black booklet is our drink menu. I can also recommend soft drinks, sake, shochu, and wine verbally. Please feel free to ask if you\'d like any recommendations.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>What sake do you recommend?</li>
+                                <li>I'll look at the menu first</li>
+                                <li>What soft drinks do you have?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ④ ウェルカムライス -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>④ ウェルカムライス</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">コースはウェルカムライスからご提供いたします。本日のお米は[お米の品種]を使用しております。まずはテイスティングとして一口サイズでお召し上がりください。最後にお出しする土鍋ごはんにも同じお米を使用しております。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Our course begins with welcome rice. Today we're using [Rice Brand]. Please enjoy this bite-sized portion as a tasting. We'll use the same rice for the clay pot rice at the end of your meal.</div>
+                            <button class="play-button" onclick="speak('Our course begins with welcome rice. Today we\'re using Rice Brand. Please enjoy this bite-sized portion as a tasting. We\'ll use the same rice for the clay pot rice at the end of your meal.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>This rice is delicious!</li>
+                                <li>What kind of rice is this?</li>
+                                <li>Thank you</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">お飲み物お決まりでしたらお伺いいたします。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">May I take your drink order when you're ready?</div>
+                            <button class="play-button" onclick="speak('May I take your drink order when you\'re ready?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I'll have sake, please</li>
+                                <li>Just water for now</li>
+                                <li>What do you recommend?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ⑤ 先付けとちらし寿司 -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>⑤ 先付けとちらし寿司</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">まずは先付けでございます。本日の先付けは[品数]品で構成されており、左手から[料理名]、[料理名]、[料理名]、[料理名]、そして一番上に[料理名]をご用意しております。続いて、ちらし寿司でございます。お味がついておりますので、そのままお召し上がりください。次のお料理までの間、どうぞごゆっくりお楽しみください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">First, here are your appetizers. Today's selection consists of [Number of Dishes] items. From the left, we have [Dish Name], [Dish Name], [Dish Name], [Dish Name], and on top, [Dish Name]. Next, this is chirashi sushi. It's already seasoned, so please enjoy it as is. Please take your time and enjoy before the next course.</div>
+                            <button class="play-button" onclick="speak('First, here are your appetizers. Today\'s selection consists of Number of Dishes items. From the left, we have Dish Name, Dish Name, Dish Name, Dish Name, and on top, Dish Name. Next, this is chirashi sushi. It\'s already seasoned, so please enjoy it as is. Please take your time and enjoy before the next course.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Everything looks wonderful</li>
+                                <li>What is this ingredient?</li>
+                                <li>Thank you</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🍶 日本酒について -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🍶 日本酒について</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">お好みの味わいはございますでしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Do you have any preference for the taste profile?</div>
+                            <button class="play-button" onclick="speak('Do you have any preference for the taste profile?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I prefer dry sake</li>
+                                <li>Something sweet, please</li>
+                                <li>What's the difference between them?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">辛口: 洗心はすっきりとした軽やかな味わい、萬寿（まんじゅ）はまろやかで飲みやすく、碧寿（へきじゅ）はコクがありしっかりとした味わいです。お好みに合わせてお選びください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">For dry sake: Senshin has a clean and light taste, Manju is smooth and easy to drink, and Hekiju has a rich, full-bodied flavor. Please choose according to your preference.</div>
+                            <button class="play-button" onclick="speak('For dry sake: Senshin has a clean and light taste, Manju is smooth and easy to drink, and Hekiju has a rich, full-bodied flavor. Please choose according to your preference.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I'll try the Senshin</li>
+                                <li>The Manju sounds good</li>
+                                <li>Which one do you recommend?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">甘口: くどき上手はフルーティーで華やかな香りが特徴で、花鳥月夕は上品な甘さがありながら、すっきりとした後味が楽しめます。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">For sweet sake: Kudoki Jozu features a fruity and floral aroma, while Kacho Getsuseki offers elegant sweetness with a clean finish.</div>
+                            <button class="play-button" onclick="speak('For sweet sake: Kudoki Jozu features a fruity and floral aroma, while Kacho Getsuseki offers elegant sweetness with a clean finish.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I'd like the fruity one</li>
+                                <li>The Kacho Getsuseki, please</li>
+                                <li>I'll have that one</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🥃 焼酎について -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🥃 焼酎について</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">芋焼酎は魔王、克、安田、麦焼酎は兼八、栃栗毛、青鹿毛、米焼酎は鳥飼、山ほたる、黒糖焼酎はまんこいをご用意しております。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">For sweet potato shochu, we have Mao, Katsu, and Yasuda. For barley shochu, we offer Kanehachi, Tochikurige, and Aoshikage. For rice shochu, we have Torikai and Yama Hotaru. For brown sugar shochu, we have Mankoi.</div>
+                            <button class="play-button" onclick="speak('For sweet potato shochu, we have Mao, Katsu, and Yasuda. For barley shochu, we offer Kanehachi, Tochikurige, and Aoshikage. For rice shochu, we have Torikai and Yama Hotaru. For brown sugar shochu, we have Mankoi.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I'll have the sweet potato shochu</li>
+                                <li>What's the difference between them?</li>
+                                <li>The barley one, please</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🥤 ソフトドリンク -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🥤 ソフトドリンク</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">温かいお飲み物は温かいほうじ茶と期間限定でレモン紅茶がございます。冷たいお飲み物は、水出し緑茶とオーストラリア産のぶどうジュース（赤・白）などをご用意しております。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">For hot beverages, we have hot roasted tea and seasonal lemon tea. For cold beverages, we offer cold-brewed green tea and Australian grape juice in both red and white varieties.</div>
+                            <button class="play-button" onclick="speak('For hot beverages, we have hot roasted tea and seasonal lemon tea. For cold beverages, we offer cold-brewed green tea and Australian grape juice in both red and white varieties.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I'll have the hot roasted tea</li>
+                                <li>Cold green tea, please</li>
+                                <li>The white grape juice sounds nice</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🥩 牛カツ -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🥩 牛カツ</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">こちら牛カツのソースでございます。まもなくお持ちいたしますのでもう少々お待ちください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Here is the sauce for the beef cutlet. I'll bring the cutlet shortly, so please wait just a moment.</div>
+                            <button class="play-button" onclick="speak('Here is the sauce for the beef cutlet. I\'ll bring the cutlet shortly, so please wait just a moment.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you</li>
+                                <li>Looking forward to it</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">こちら牛カツでございます。お味ついておりますがお好みでソースをかけてお召し上がりください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Here is your beef cutlet. It's already seasoned, but please feel free to add sauce to your liking.</div>
+                            <button class="play-button" onclick="speak('Here is your beef cutlet. It\'s already seasoned, but please feel free to add sauce to your liking.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>This looks delicious</li>
+                                <li>Thank you</li>
+                                <li>Should I use all the sauce?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🦪 うに3種 -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🦪 うに3種</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">こちら、お先にうに3種用の塩と醤油でございます。ただいまお持ちいたしますのでもう少々お待ちください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Here are salt and soy sauce for the sea urchin tasting. I'll bring the sea urchin shortly, so please wait just a moment.</div>
+                            <button class="play-button" onclick="speak('Here are salt and soy sauce for the sea urchin tasting. I\'ll bring the sea urchin shortly, so please wait just a moment.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you</li>
+                                <li>Which one should I use?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">本日のうにの食べ比べでございます。左手から[産地]産、[産地]産、[産地]産のうにをご用意しております。それぞれの風味の違いをお楽しみください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Here is today's sea urchin comparison. From the left, we have sea urchin from [Origin], [Origin], and [Origin]. Please enjoy the different flavors of each variety.</div>
+                            <button class="play-button" onclick="speak('Here is today\'s sea urchin comparison. From the left, we have sea urchin from Origin, Origin, and Origin. Please enjoy the different flavors of each variety.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>They all look amazing</li>
+                                <li>Which one is the sweetest?</li>
+                                <li>Can you tell me more about the differences?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🍖 すき焼き -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🍖 すき焼き</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">すき焼きのご準備をさせて頂いてもよろしいでしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">May I begin preparing your sukiyaki?</div>
+                            <button class="play-button" onclick="speak('May I begin preparing your sukiyaki?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, please</li>
+                                <li>Go ahead</li>
+                                <li>I'm ready</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">はじめにお肉のご説明をいたします。当店ではおひとり様3枚、サーロイン・肩ロース・もも肉の順にお焼きいたします。まずサーロインですが、脂の多い部位ですので、薬味とポン酢でさっぱりとお召し上がりいただきます。薬味はねぎと大根おろしですが、お苦手なものはございますか？ありがとうございます。当店お肉は少しレアめにお焼きしておりますが、問題ございませんでしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Let me explain the meat selection. We'll serve three pieces per person: sirloin, shoulder roast, and thigh meat, in that order. The sirloin is a fatty cut, so we serve it with condiments and ponzu sauce for a refreshing taste. The condiments are green onion and grated daikon radish. Do you have any allergies to these? Thank you. We cook our meat slightly rare. Is that alright with you?</div>
+                            <button class="play-button" onclick="speak('Let me explain the meat selection. We\'ll serve three pieces per person: sirloin, shoulder roast, and thigh meat, in that order. The sirloin is a fatty cut, so we serve it with condiments and ponzu sauce for a refreshing taste. The condiments are green onion and grated daikon radish. Do you have any allergies to these? Thank you. We cook our meat slightly rare. Is that alright with you?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>That's perfect</li>
+                                <li>No allergies, thank you</li>
+                                <li>Could you cook it more well-done?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">お次は肩ロースを焼かせていただきます。肩ロースは砂糖醤油で味付けし、卵に絡めてお召し上がりいただきます。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Next, I'll cook the shoulder roast. We'll season it with sweet soy sauce and serve it with beaten egg.</div>
+                            <button class="play-button" onclick="speak('Next, I\'ll cook the shoulder roast. We\'ll season it with sweet soy sauce and serve it with beaten egg.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Sounds delicious</li>
+                                <li>Looking forward to it</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">最後にもも肉をお焼きするのですが、お野菜とおうどんと一緒にお召し上がりいただけます。おうどんは追加する形となりますがいかがなさいますか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Finally, I'll cook the thigh meat, which you can enjoy with vegetables and udon noodles. The udon is an additional option. Would you like to add it?</div>
+                            <button class="play-button" onclick="speak('Finally, I\'ll cook the thigh meat, which you can enjoy with vegetables and udon noodles. The udon is an additional option. Would you like to add it?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, please add the udon</li>
+                                <li>No udon for me, thank you</li>
+                                <li>How much is the udon?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">もも肉は割下で味付けし、野菜と一緒にお召し上がりいただきます。本日のお野菜は九条ネギとごぼうのささがきです。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">The thigh meat is seasoned with warishita sauce and served with vegetables. Today's vegetables are Kujo green onions and julienned burdock root.</div>
+                            <button class="play-button" onclick="speak('The thigh meat is seasoned with warishita sauce and served with vegetables. Today\'s vegetables are Kujo green onions and julienned burdock root.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you</li>
+                                <li>Everything looks wonderful</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🍮 デザート -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>🍮 デザート</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">最後のデザートでございます。羽二重餅の上にあんことぶどうを乗せております。手で包み、フルーツ大福のような形にしてお召し上がりください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Here is your final dessert. We have sweet bean paste and grapes on top of habutae mochi. Please wrap it with your hands to create something like a fruit daifuku and enjoy.</div>
+                            <button class="play-button" onclick="speak('Here is your final dessert. We have sweet bean paste and grapes on top of habutae mochi. Please wrap it with your hands to create something like a fruit daifuku and enjoy.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>How creative!</li>
+                                <li>This looks delicious</li>
+                                <li>Thank you for the wonderful meal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 💳 お会計 -->
+            <div class="accordion">
+                <div class="accordion-header">
+                    <h2>💳 お会計</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">コース料理はこちらで以上でございます。もし追加のご注文がなければ、お会計を締めさせていただいてもよろしいでしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">This completes your course meal. If you don't have any additional orders, may I close your check?</div>
+                            <button class="play-button" onclick="speak('This completes your course meal. If you don\'t have any additional orders, may I close your check?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, please</li>
+                                <li>That's all, thank you</li>
+                                <li>Actually, I'd like to order more drinks</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">ご予約の際にご登録いただいているクレジットカードでそのままお支払いしてもよろしいでしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">May I process the payment with the credit card you registered when making your reservation?</div>
+                            <button class="play-button" onclick="speak('May I process the payment with the credit card you registered when making your reservation?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, that's fine</li>
+                                <li>I'd like to use a different card</li>
+                                <li>Can I pay in cash?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">お会計、無事完了いたしました。ショートメールよりテーブルチェックのリンクが届いていると思われます。下の方まで進んでいただき、電話番号をご入力いただくと領収書をダウンロードいただけますのでご確認ください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Your payment has been processed successfully. You should receive a text message with a TableCheck link. Please scroll down, enter your phone number, and you can download your receipt.</div>
+                            <button class="play-button" onclick="speak('Your payment has been processed successfully. You should receive a text message with a TableCheck link. Please scroll down, enter your phone number, and you can download your receipt.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you</li>
+                                <li>I'll check my phone</li>
+                                <li>I didn't receive the message</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">ご希望でしたら明細をお作りいたしますが、いかがなさいますか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Would you like me to prepare an itemized receipt?</div>
+                            <button class="play-button" onclick="speak('Would you like me to prepare an itemized receipt?')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, please</li>
+                                <li>No, thank you</li>
+                                <li>The digital receipt is fine</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">本日はどうもありがとうございました。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Thank you very much for dining with us today.</div>
+                            <button class="play-button" onclick="speak('Thank you very much for dining with us today.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you for the wonderful service</li>
+                                <li>Everything was excellent</li>
+                                <li>We'll definitely come back</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // アコーディオン機能
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const accordion = header.parentElement;
+                const isActive = accordion.classList.contains('active');
+                
+                // 他のアコーディオンを閉じる
+                document.querySelectorAll('.accordion').forEach(acc => {
+                    acc.classList.remove('active');
+                });
+                
+                // クリックされたアコーディオンをトグル
+                if (!isActive) {
+                    accordion.classList.add('active');
+                }
+            });
+        });
+
+        // 音声読み上げ機能
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                // 既存の読み上げをキャンセル
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.0;
+                utterance.volume = 1.0;
+                
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('お使いのブラウザは音声読み上げに対応していません。');
+            }
+        }
+    </script>
+</body>
+</html>
