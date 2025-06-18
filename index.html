@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おこん接客英語マニュアル</title>
+    <meta name="theme-color" content="#007bff">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icon-192x192.png">
     <style>
         * {
             margin: 0;
@@ -153,6 +156,213 @@
             border-left: 3px solid #007bff;
         }
 
+        /* 検索機能 */
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .search-results {
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        /* お気に入り機能 */
+        .favorite-btn {
+            background: none;
+            border: none;
+            color: #ffc107;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .favorite-btn:hover {
+            color: #ffb600;
+        }
+
+        .favorite-btn.active {
+            color: #ff6b00;
+        }
+
+        .favorites-section {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .favorites-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .favorites-header h2 {
+            color: #856404;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .clear-favorites {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .favorites-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .favorite-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .favorite-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* カタカナ読み */
+        .katakana-guide {
+            font-size: 13px;
+            color: #28a745;
+            background-color: #d4edda;
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-top: 5px;
+            font-weight: 500;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* 履歴機能 */
+        .history-section {
+            background-color: #e2e3e5;
+            border: 1px solid #c6c8ca;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .history-header h2 {
+            color: #495057;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .clear-history {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .history-item {
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .history-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .history-time {
+            font-size: 12px;
+            color: #6c757d;
+            float: right;
+        }
+
+        /* 隠し機能 */
+        .hidden {
+            display: none !important;
+        }
+
+        /* メニューバー */
+        .menu-bar {
+            background-color: #fff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .menu-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-btn {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            background-color: #e9ecef;
+        }
+
+        .menu-btn.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
         @media (max-width: 480px) {
             h1 {
                 font-size: 20px;
@@ -166,6 +376,15 @@
                 margin: 12px;
                 padding: 16px;
             }
+
+            .menu-buttons {
+                flex-direction: column;
+            }
+
+            .menu-btn {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -173,7 +392,277 @@
     <div class="container">
         <h1>おこん接客英語マニュアル 🍚🍶</h1>
         
+        <!-- 検索機能 -->
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="フレーズを検索... (例: 予約, 支払い, アレルギー)" id="searchInput">
+        </div>
+        
+        <div class="search-results" id="searchResults"></div>
+        
+        <!-- メニューバー -->
+        <div class="menu-bar">
+            <div class="menu-buttons">
+                <button class="menu-btn active" onclick="showSection('all')">全て</button>
+                <button class="menu-btn" onclick="showSection('favorites')">お気に入り</button>
+                <button class="menu-btn" onclick="showSection('history')">履歴</button>
+                <button class="menu-btn" onclick="showSection('emergency')">緊急</button>
+                <button class="menu-btn" onclick="showSection('numbers')">数字</button>
+                <button class="menu-btn" onclick="showSection('allergies')">アレルギー</button>
+            </div>
+        </div>
+        
+        <!-- お気に入りセクション -->
+        <div class="favorites-section" id="favoritesSection" style="display: none;">
+            <div class="favorites-header">
+                <h2>⭐ お気に入りフレーズ</h2>
+                <button class="clear-favorites" onclick="clearFavorites()">クリア</button>
+            </div>
+            <div class="favorites-list" id="favoritesList">
+                <!-- お気に入りフレーズがここに表示される -->
+            </div>
+        </div>
+        
+        <!-- 履歴セクション -->
+        <div class="history-section" id="historySection" style="display: none;">
+            <div class="history-header">
+                <h2>📝 使用履歴</h2>
+                <button class="clear-history" onclick="clearHistory()">クリア</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <!-- 使用履歴がここに表示される -->
+            </div>
+        </div>
+        
         <div id="accordion-container">
+            <!-- 🚨 緊急・トラブル対応 -->
+            <div class="accordion emergency-section" data-category="emergency">
+                <div class="accordion-header">
+                    <h2>🚨 緊急・トラブル対応</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('emergency-1', 'すみません、理解できませんでした')">☆</button></h3>
+                            <div class="phrase-text">すみません、理解できませんでした。もう一度おっしゃっていただけますか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">I'm sorry, I didn't understand. Could you please repeat that?</div>
+                            <div class="katakana-guide">アイム ソーリー、アイ ディドゥント アンダースタンド。クッド ユー プリーズ リピート ザット？</div>
+                            <button class="play-button" onclick="speakAndRecord('I\'m sorry, I didn\'t understand. Could you please repeat that?', 'すみません、理解できませんでした')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Let me speak more slowly</li>
+                                <li>I said...</li>
+                                <li>Can you speak Japanese?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('emergency-2', '少々お待ちください')">☆</button></h3>
+                            <div class="phrase-text">少々お待ちください。英語を話せるスタッフを呼んでまいります。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Please wait a moment. I'll get someone who speaks English.</div>
+                            <div class="katakana-guide">プリーズ ウェイト ア モーメント。アイル ゲット サムワン フー スピークス イングリッシュ。</div>
+                            <button class="play-button" onclick="speakAndRecord('Please wait a moment. I\'ll get someone who speaks English.', '少々お待ちください')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you</li>
+                                <li>That would be helpful</li>
+                                <li>No problem</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('emergency-3', '申し訳ございません')">☆</button></h3>
+                            <div class="phrase-text">申し訳ございません。ご迷惑をおかけして大変失礼いたしました。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">I sincerely apologize. I'm very sorry for the inconvenience.</div>
+                            <div class="katakana-guide">アイ シンシアリー アポロジャイズ。アイム ベリー ソーリー フォー ジ インコンビーニエンス。</div>
+                            <button class="play-button" onclick="speakAndRecord('I sincerely apologize. I\'m very sorry for the inconvenience.', '申し訳ございません')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>It's okay</li>
+                                <li>No problem</li>
+                                <li>Don't worry about it</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🔢 数字・時間・金額 -->
+            <div class="accordion numbers-section" data-category="numbers">
+                <div class="accordion-header">
+                    <h2>🔢 数字・時間・金額</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('numbers-1', '何名様でしょうか')">☆</button></h3>
+                            <div class="phrase-text">何名様でしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">How many people in your party?</div>
+                            <div class="katakana-guide">ハウ メニー ピープル イン ユア パーティー？</div>
+                            <button class="play-button" onclick="speakAndRecord('How many people in your party?', '何名様でしょうか')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Two people / Four people</li>
+                                <li>Just me / Party of three</li>
+                                <li>We're still waiting for one more</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('numbers-2', '何時のご予約でしょうか')">☆</button></h3>
+                            <div class="phrase-text">何時のご予約でしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">What time is your reservation?</div>
+                            <div class="katakana-guide">ワット タイム イズ ユア レザベーション？</div>
+                            <button class="play-button" onclick="speakAndRecord('What time is your reservation?', '何時のご予約でしょうか')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Seven o'clock / 7:30</li>
+                                <li>Eight fifteen</li>
+                                <li>I think it was 6:30</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('numbers-3', '合計金額は')">☆</button></h3>
+                            <div class="phrase-text">合計金額は[金額]円でございます。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Your total comes to [Amount] yen.</div>
+                            <div class="katakana-guide">ユア トータル カムズ トゥ [アマウント] エン。</div>
+                            <button class="play-button" onclick="speakAndRecord('Your total comes to Amount yen.', '合計金額は')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Okay, I'll pay by card</li>
+                                <li>Can I pay cash?</li>
+                                <li>Is service charge included?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 🥜 アレルギー・食事制限 -->
+            <div class="accordion allergies-section" data-category="allergies">
+                <div class="accordion-header">
+                    <h2>🥜 アレルギー・食事制限</h2>
+                    <span class="accordion-arrow">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('allergy-1', '食物アレルギーはございますか')">☆</button></h3>
+                            <div class="phrase-text">食物アレルギーはございますか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Do you have any food allergies?</div>
+                            <div class="katakana-guide">ドゥー ユー ハブ エニー フード アラジーズ？</div>
+                            <button class="play-button" onclick="speakAndRecord('Do you have any food allergies?', '食物アレルギーはございますか')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>I'm allergic to shellfish</li>
+                                <li>No allergies</li>
+                                <li>I can't eat nuts</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('allergy-2', 'お料理にはこちらの食材が含まれています')">☆</button></h3>
+                            <div class="phrase-text">こちらのお料理には[アレルゲン]が含まれています。大丈夫でしょうか？</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">This dish contains [Allergen]. Is that okay for you?</div>
+                            <div class="katakana-guide">ディス ディッシュ コンテインズ [アラージェン]。イズ ザット オーケー フォー ユー？</div>
+                            <button class="play-button" onclick="speakAndRecord('This dish contains Allergen. Is that okay for you?', 'お料理にはこちらの食材が含まれています')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>No, I can't eat that</li>
+                                <li>That's fine</li>
+                                <li>Can you make it without that?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('allergy-3', '別のお料理をご提案いたします')">☆</button></h3>
+                            <div class="phrase-text">別のお料理をご提案いたします。少々お待ちください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">Let me suggest an alternative dish. Please wait a moment.</div>
+                            <div class="katakana-guide">レット ミー サジェスト アン オルタナティブ ディッシュ。プリーズ ウェイト ア モーメント。</div>
+                            <button class="play-button" onclick="speakAndRecord('Let me suggest an alternative dish. Please wait a moment.', '別のお料理をご提案いたします')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Thank you so much</li>
+                                <li>That would be great</li>
+                                <li>I appreciate it</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('allergy-4', 'ベジタリアン対応')">☆</button></h3>
+                            <div class="phrase-text">ベジタリアン対応のお料理もご用意できます。ご希望でしたらお申し付けください。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">We can prepare vegetarian dishes. Please let us know if you're interested.</div>
+                            <div class="katakana-guide">ウィー キャン プリペア ベジタリアン ディッシーズ。プリーズ レット アス ノウ イフ ユーアー インタレスティッド。</div>
+                            <button class="play-button" onclick="speakAndRecord('We can prepare vegetarian dishes. Please let us know if you\'re interested.', 'ベジタリアン対応')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>Yes, I'm vegetarian</li>
+                                <li>Do you have vegan options?</li>
+                                <li>That's perfect, thank you</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- ① ご来店時 -->
             <div class="accordion">
                 <div class="accordion-header">
@@ -183,13 +672,14 @@
                 <div class="accordion-content">
                     <div class="phrase-card">
                         <div class="phrase-section">
-                            <h3>🗣️ 日本語</h3>
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('arrival-1', 'いらっしゃいませ')">☆</button></h3>
                             <div class="phrase-text">いらっしゃいませ！お待ちしておりました。お名前をお伺いしてもよろしいでしょうか？ありがとうございます。それではご案内いたします。お席こちらでございます。</div>
                         </div>
                         <div class="phrase-section">
                             <h3>🇺🇸 English</h3>
                             <div class="phrase-text">Welcome! We've been expecting you. May I have your name, please? Thank you. Please follow me to your table. Your seat is right this way.</div>
-                            <button class="play-button" onclick="speak('Welcome! We\'ve been expecting you. May I have your name, please? Thank you. Please follow me to your table. Your seat is right this way.')">▶️ Play</button>
+                            <div class="katakana-guide">ウェルカム！ウィーブ ビーン エクスペクティング ユー。メイ アイ ハブ ユア ネーム プリーズ？</div>
+                            <button class="play-button" onclick="speakAndRecord('Welcome! We\'ve been expecting you. May I have your name, please? Thank you. Please follow me to your table. Your seat is right this way.', 'いらっしゃいませ')">▶️ Play</button>
                         </div>
                         <div class="phrase-section">
                             <h3>💬 想定される返答 (Response)</h3>
@@ -212,13 +702,14 @@
                 <div class="accordion-content">
                     <div class="phrase-card">
                         <div class="phrase-section">
-                            <h3>🗣️ 日本語</h3>
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('coat-1', 'お召し物をお預かりいたします')">☆</button></h3>
                             <div class="phrase-text">よろしければお召し物をお預かりいたします。ただいまおしぼりをお持ちいたしますので、少々お待ちください。</div>
                         </div>
                         <div class="phrase-section">
                             <h3>🇺🇸 English</h3>
                             <div class="phrase-text">May I take your coat? I'll bring you a hot towel in just a moment. Please wait a moment.</div>
-                            <button class="play-button" onclick="speak('May I take your coat? I\'ll bring you a hot towel in just a moment. Please wait a moment.')">▶️ Play</button>
+                            <div class="katakana-guide">メイ アイ テイク ユア コート？アイル ブリング ユー ア ホット タオル イン ジャスト ア モーメント。</div>
+                            <button class="play-button" onclick="speakAndRecord('May I take your coat? I\'ll bring you a hot towel in just a moment. Please wait a moment.', 'お召し物をお預かりいたします')">▶️ Play</button>
                         </div>
                         <div class="phrase-section">
                             <h3>💬 想定される返答 (Response)</h3>
@@ -241,13 +732,14 @@
                 <div class="accordion-content">
                     <div class="phrase-card">
                         <div class="phrase-section">
-                            <h3>🗣️ 日本語</h3>
+                            <h3>🗣️ 日本語 <button class="favorite-btn" onclick="toggleFavorite('menu-1', 'ドリンクメニューの説明')">☆</button></h3>
                             <div class="phrase-text">こちらの黒い冊子はドリンクメニューでございます。ソフトドリンク、日本酒、焼酎、ワインは口頭でご案内いたしますので、ご希望がございましたらお気軽にお尋ねください。</div>
                         </div>
                         <div class="phrase-section">
                             <h3>🇺🇸 English</h3>
                             <div class="phrase-text">This black booklet is our drink menu. I can also recommend soft drinks, sake, shochu, and wine verbally. Please feel free to ask if you'd like any recommendations.</div>
-                            <button class="play-button" onclick="speak('This black booklet is our drink menu. I can also recommend soft drinks, sake, shochu, and wine verbally. Please feel free to ask if you\'d like any recommendations.')">▶️ Play</button>
+                            <div class="katakana-guide">ディス ブラック ブックレット イズ アワ ドリンク メニュー。アイ キャン オールソー レコメンド...</div>
+                            <button class="play-button" onclick="speakAndRecord('This black booklet is our drink menu. I can also recommend soft drinks, sake, shochu, and wine verbally. Please feel free to ask if you\'d like any recommendations.', 'ドリンクメニューの説明')">▶️ Play</button>
                         </div>
                         <div class="phrase-section">
                             <h3>💬 想定される返答 (Response)</h3>
@@ -797,6 +1289,24 @@
     </div>
 
     <script>
+        // グローバル変数
+        let favorites = JSON.parse(localStorage.getItem('favorites') || '[]');
+        let history = JSON.parse(localStorage.getItem('history') || '[]');
+        let currentSection = 'all';
+
+        // 初期化
+        document.addEventListener('DOMContentLoaded', function() {
+            updateFavoriteButtons();
+            updateFavoritesList();
+            updateHistoryList();
+            setupSearch();
+            
+            // Service Worker登録（PWA）
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js').catch(e => console.log('SW registration failed'));
+            }
+        });
+
         // アコーディオン機能
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
@@ -815,10 +1325,9 @@
             });
         });
 
-        // 音声読み上げ機能
+        // 音声読み上げ機能（履歴記録付き）
         function speak(text) {
             if ('speechSynthesis' in window) {
-                // 既存の読み上げをキャンセル
                 window.speechSynthesis.cancel();
                 
                 const utterance = new SpeechSynthesisUtterance(text);
@@ -831,6 +1340,191 @@
             } else {
                 alert('お使いのブラウザは音声読み上げに対応していません。');
             }
+        }
+
+        // 音声読み上げと履歴記録
+        function speakAndRecord(englishText, japaneseText) {
+            speak(englishText);
+            addToHistory(japaneseText, englishText);
+        }
+
+        // セクション表示切り替え
+        function showSection(section) {
+            currentSection = section;
+            
+            // メニューボタンの状態更新
+            document.querySelectorAll('.menu-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // セクションの表示/非表示
+            const accordionContainer = document.getElementById('accordion-container');
+            const favoritesSection = document.getElementById('favoritesSection');
+            const historySection = document.getElementById('historySection');
+            
+            // 全てを非表示にする
+            accordionContainer.style.display = 'none';
+            favoritesSection.style.display = 'none';
+            historySection.style.display = 'none';
+            
+            if (section === 'all') {
+                accordionContainer.style.display = 'block';
+                // 全てのアコーディオンを表示
+                document.querySelectorAll('.accordion').forEach(acc => {
+                    acc.classList.remove('hidden');
+                });
+            } else if (section === 'favorites') {
+                favoritesSection.style.display = 'block';
+            } else if (section === 'history') {
+                historySection.style.display = 'block';
+            } else {
+                accordionContainer.style.display = 'block';
+                // 特定カテゴリのみ表示
+                document.querySelectorAll('.accordion').forEach(acc => {
+                    if (acc.dataset.category === section) {
+                        acc.classList.remove('hidden');
+                    } else {
+                        acc.classList.add('hidden');
+                    }
+                });
+            }
+        }
+
+        // お気に入り機能
+        function toggleFavorite(id, text) {
+            const index = favorites.findIndex(fav => fav.id === id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push({ id, text, timestamp: Date.now() });
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            updateFavoriteButtons();
+            updateFavoritesList();
+        }
+
+        function updateFavoriteButtons() {
+            document.querySelectorAll('.favorite-btn').forEach(btn => {
+                const onclick = btn.getAttribute('onclick');
+                if (onclick) {
+                    const match = onclick.match(/toggleFavorite\('([^']+)',/);
+                    if (match) {
+                        const id = match[1];
+                        const isFavorite = favorites.some(fav => fav.id === id);
+                        btn.classList.toggle('active', isFavorite);
+                        btn.textContent = isFavorite ? '★' : '☆';
+                    }
+                }
+            });
+        }
+
+        function updateFavoritesList() {
+            const favoritesList = document.getElementById('favoritesList');
+            if (favorites.length === 0) {
+                favoritesList.innerHTML = '<p style="color: #6c757d; text-align: center;">お気に入りフレーズはありません</p>';
+            } else {
+                favoritesList.innerHTML = favorites.map(fav => 
+                    `<div class="favorite-item" onclick="searchAndHighlight('${fav.text}')">
+                        ${fav.text}
+                    </div>`
+                ).join('');
+            }
+        }
+
+        function clearFavorites() {
+            if (confirm('お気に入りをすべて削除しますか？')) {
+                favorites = [];
+                localStorage.setItem('favorites', JSON.stringify(favorites));
+                updateFavoriteButtons();
+                updateFavoritesList();
+            }
+        }
+
+        // 履歴機能
+        function addToHistory(japaneseText, englishText) {
+            const historyItem = {
+                japanese: japaneseText,
+                english: englishText,
+                timestamp: Date.now()
+            };
+            
+            // 同じ項目を削除（重複回避）
+            history = history.filter(item => item.japanese !== japaneseText);
+            
+            // 最新を先頭に追加
+            history.unshift(historyItem);
+            
+            // 最大50件まで保持
+            if (history.length > 50) {
+                history = history.slice(0, 50);
+            }
+            
+            localStorage.setItem('history', JSON.stringify(history));
+            updateHistoryList();
+        }
+
+        function updateHistoryList() {
+            const historyList = document.getElementById('historyList');
+            if (history.length === 0) {
+                historyList.innerHTML = '<p style="color: #6c757d; text-align: center;">使用履歴はありません</p>';
+            } else {
+                historyList.innerHTML = history.map(item => 
+                    `<div class="history-item" onclick="searchAndHighlight('${item.japanese}')">
+                        ${item.japanese}
+                        <span class="history-time">${new Date(item.timestamp).toLocaleTimeString()}</span>
+                    </div>`
+                ).join('');
+            }
+        }
+
+        function clearHistory() {
+            if (confirm('履歴をすべて削除しますか？')) {
+                history = [];
+                localStorage.setItem('history', JSON.stringify(history));
+                updateHistoryList();
+            }
+        }
+
+        // 検索機能
+        function setupSearch() {
+            const searchInput = document.getElementById('searchInput');
+            const searchResults = document.getElementById('searchResults');
+            
+            searchInput.addEventListener('input', function() {
+                const query = this.value.toLowerCase().trim();
+                
+                if (query === '') {
+                    searchResults.textContent = '';
+                    document.querySelectorAll('.accordion').forEach(acc => {
+                        acc.classList.remove('hidden');
+                    });
+                    return;
+                }
+                
+                let matchCount = 0;
+                document.querySelectorAll('.accordion').forEach(acc => {
+                    const text = acc.textContent.toLowerCase();
+                    if (text.includes(query)) {
+                        acc.classList.remove('hidden');
+                        matchCount++;
+                    } else {
+                        acc.classList.add('hidden');
+                    }
+                });
+                
+                searchResults.textContent = `「${query}」の検索結果: ${matchCount}件`;
+            });
+        }
+
+        function searchAndHighlight(text) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = text;
+            searchInput.dispatchEvent(new Event('input'));
+            
+            // 全てセクションに戻る
+            showSection('all');
+            document.querySelector('.menu-btn').click();
         }
     </script>
 </body>
