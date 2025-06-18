@@ -863,7 +863,7 @@
         <div class="loading-text">おこん英語マニュアルを読み込み中...</div>
     </div>
 
-    <div class="container" id="mainContent" style="opacity: 0;">
+    <div class="container" id="mainContent">
         <div class="header-container">
             <h1 class="main-title">
                 <span class="title-text">おこん</span>
@@ -917,7 +917,7 @@
             </div>
         </div>
         
-        <div id="accordion-container" style="opacity: 0;">
+        <div id="accordion-container">
             <!-- 🚨 緊急・トラブル対応 -->
             <div class="accordion emergency-section" data-category="emergency">
                 <div class="accordion-header">
@@ -1780,19 +1780,15 @@
 
         // 初期化
         document.addEventListener('DOMContentLoaded', function() {
-            // ローディングアニメーション
-            setTimeout(() => {
-                const loadingScreen = document.getElementById('loadingScreen');
-                const mainContent = document.getElementById('mainContent');
-                
-                loadingScreen.classList.add('hide');
-                mainContent.style.opacity = '1';
-                mainContent.classList.add('fade-in');
-                
-                setTimeout(() => {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 1500);
+            // ローディング画面を即座に非表示にして、メインコンテンツを表示
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent');
+            const accordionContainer = document.getElementById('accordion-container');
+            
+            // 即座にローディングを非表示
+            loadingScreen.style.display = 'none';
+            mainContent.style.opacity = '1';
+            accordionContainer.style.opacity = '1';
             
             updateFavoriteButtons();
             updateFavoritesList();
@@ -1803,19 +1799,6 @@
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('./sw.js').catch(e => console.log('SW registration failed'));
             }
-            
-            // アコーディオンにフェードインアニメーションを追加
-            setTimeout(() => {
-                const accordionContainer = document.getElementById('accordion-container');
-                accordionContainer.style.opacity = '1';
-                
-                const accordions = document.querySelectorAll('.accordion');
-                accordions.forEach((accordion, index) => {
-                    setTimeout(() => {
-                        accordion.classList.add('fade-in');
-                    }, index * 100);
-                });
-            }, 2000);
         });
 
         // アコーディオン機能
