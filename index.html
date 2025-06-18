@@ -42,26 +42,87 @@
             padding: 0 16px;
         }
 
-        h1 {
+        .header-container {
             text-align: center;
-            color: #ffffff;
-            margin-bottom: 30px;
-            font-size: 28px;
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #fff, #e3f2fd);
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .main-title {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .title-text {
+            font-size: 36px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 50%, #bbdefb 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleGlow 3s ease-in-out infinite alternate;
+            text-shadow: 0 4px 20px rgba(255,255,255,0.5);
+            letter-spacing: 2px;
+            animation: titlePulse 3s ease-in-out infinite;
         }
 
-        @keyframes titleGlow {
+        .title-subtitle {
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        .title-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .icon-rice, .icon-sake {
+            font-size: 24px;
+            animation: iconFloat 2s ease-in-out infinite alternate;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .icon-sake {
+            animation-delay: 0.5s;
+        }
+
+        .subtitle {
+            margin: 15px 0 0 0;
+            font-size: 14px;
+            color: rgba(255,255,255,0.8);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 4px 20px rgba(255,255,255,0.5);
+            }
+            50% {
+                transform: scale(1.02);
+                text-shadow: 0 6px 30px rgba(255,255,255,0.7), 0 0 40px rgba(255,255,255,0.3);
+            }
+        }
+
+        @keyframes iconFloat {
             from {
-                text-shadow: 0 2px 10px rgba(255,255,255,0.3);
+                transform: translateY(0px) rotate(0deg);
             }
             to {
-                text-shadow: 0 2px 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,255,255,0.4);
+                transform: translateY(-6px) rotate(5deg);
             }
         }
 
@@ -758,8 +819,21 @@
         }
 
         @media (max-width: 480px) {
-            h1 {
-                font-size: 20px;
+            .header-container {
+                margin-bottom: 30px;
+                padding: 16px;
+            }
+            
+            .title-text {
+                font-size: 28px;
+            }
+            
+            .title-subtitle {
+                font-size: 16px;
+            }
+            
+            .subtitle {
+                font-size: 13px;
             }
             
             .accordion-header h2 {
@@ -790,7 +864,17 @@
     </div>
 
     <div class="container" id="mainContent" style="opacity: 0;">
-        <h1>おこん接客英語マニュアル 🍚🍶</h1>
+        <div class="header-container">
+            <h1 class="main-title">
+                <span class="title-text">おこん</span>
+                <span class="title-subtitle">接客英語マニュアル</span>
+                <div class="title-icons">
+                    <span class="icon-rice">🍚</span>
+                    <span class="icon-sake">🍶</span>
+                </div>
+            </h1>
+            <p class="subtitle">レストランスタッフのための英語接客支援アプリ</p>
+        </div>
         
         <!-- 検索機能 -->
         <div class="search-container">
