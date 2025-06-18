@@ -196,7 +196,7 @@
         }
 
         .accordion.active .accordion-content {
-            max-height: 2000px;
+            max-height: 10000px;
         }
 
         .phrase-card {
@@ -208,6 +208,8 @@
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             position: relative;
+            min-height: auto;
+            height: auto;
         }
 
         .phrase-card::before {
@@ -251,6 +253,10 @@
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
             position: relative;
+            word-wrap: break-word;
+            word-break: break-word;
+            white-space: normal;
+            overflow-wrap: break-word;
         }
 
         .phrase-text:hover {
@@ -1273,12 +1279,12 @@
                     <div class="phrase-card">
                         <div class="phrase-section">
                             <h3>🗣️ 日本語</h3>
-                            <div class="phrase-text">まずは先付けでございます。本日の先付けは[品数]品で構成されており、左手から[料理名]、[料理名]、[料理名]、[料理名]、そして一番上に[料理名]をご用意しております。続いて、ちらし寿司でございます。お味がついておりますので、そのままお召し上がりください。次のお料理までの間、どうぞごゆっくりお楽しみください。</div>
+                            <div class="phrase-text">まずは、先付けとちらし寿司をご用意いたしました。ちらし寿司にはあらかじめ味がついておりますので、そのままお召し上がりください。次のお料理までのひととき、どうぞごゆっくりお楽しみください。</div>
                         </div>
                         <div class="phrase-section">
                             <h3>🇺🇸 English</h3>
-                            <div class="phrase-text">First, here are your appetizers. Today's selection consists of [Number of Dishes] items. From the left, we have [Dish Name], [Dish Name], [Dish Name], [Dish Name], and on top, [Dish Name]. Next, this is chirashi sushi. It's already seasoned, so please enjoy it as is. Please take your time and enjoy before the next course.</div>
-                            <button class="play-button" onclick="speak('First, here are your appetizers. Today\'s selection consists of Number of Dishes items. From the left, we have Dish Name, Dish Name, Dish Name, Dish Name, and on top, Dish Name. Next, this is chirashi sushi. It\'s already seasoned, so please enjoy it as is. Please take your time and enjoy before the next course.')">▶️ Play</button>
+                            <div class="phrase-text">First, we have prepared appetizers and chirashi sushi for you. The chirashi sushi has already been seasoned, so please enjoy it as is. Please take your time and enjoy this moment before the next course.</div>
+                            <button class="play-button" onclick="speak('First, we have prepared appetizers and chirashi sushi for you. The chirashi sushi has already been seasoned, so please enjoy it as is. Please take your time and enjoy this moment before the next course.')">▶️ Play</button>
                         </div>
                         <div class="phrase-section">
                             <h3>💬 想定される返答 (Response)</h3>
@@ -1369,19 +1375,38 @@
                     <div class="phrase-card">
                         <div class="phrase-section">
                             <h3>🗣️ 日本語</h3>
-                            <div class="phrase-text">芋焼酎は魔王、克、安田、麦焼酎は兼八、栃栗毛、青鹿毛、米焼酎は鳥飼、山ほたる、黒糖焼酎はまんこいをご用意しております。</div>
+                            <div class="phrase-text">焼酎は、芋・米・麦・黒糖・酒粕をご用意しております。</div>
                         </div>
                         <div class="phrase-section">
                             <h3>🇺🇸 English</h3>
-                            <div class="phrase-text">For sweet potato shochu, we have Mao, Katsu, and Yasuda. For barley shochu, we offer Kanehachi, Tochikurige, and Aoshikage. For rice shochu, we have Torikai and Yama Hotaru. For brown sugar shochu, we have Mankoi.</div>
-                            <button class="play-button" onclick="speak('For sweet potato shochu, we have Mao, Katsu, and Yasuda. For barley shochu, we offer Kanehachi, Tochikurige, and Aoshikage. For rice shochu, we have Torikai and Yama Hotaru. For brown sugar shochu, we have Mankoi.')">▶️ Play</button>
+                            <div class="phrase-text">We have shochu made from sweet potato, rice, barley, brown sugar, and sake lees.</div>
+                            <button class="play-button" onclick="speak('We have shochu made from sweet potato, rice, barley, brown sugar, and sake lees.')">▶️ Play</button>
                         </div>
                         <div class="phrase-section">
                             <h3>💬 想定される返答 (Response)</h3>
                             <ul class="response-list">
                                 <li>I'll have the sweet potato shochu</li>
                                 <li>What's the difference between them?</li>
-                                <li>The barley one, please</li>
+                                <li>The rice one, please</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="phrase-card">
+                        <div class="phrase-section">
+                            <h3>🗣️ 日本語</h3>
+                            <div class="phrase-text">焼酎の割り方はどうしますか。水、ソーダ、ロックが選べます。</div>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>🇺🇸 English</h3>
+                            <div class="phrase-text">How would you like your shochu? You can choose water, soda, or on the rocks.</div>
+                            <button class="play-button" onclick="speak('How would you like your shochu? You can choose water, soda, or on the rocks.')">▶️ Play</button>
+                        </div>
+                        <div class="phrase-section">
+                            <h3>💬 想定される返答 (Response)</h3>
+                            <ul class="response-list">
+                                <li>On the rocks, please</li>
+                                <li>With water</li>
+                                <li>With soda</li>
                             </ul>
                         </div>
                     </div>
